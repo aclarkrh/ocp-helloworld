@@ -4,7 +4,7 @@
     <mirror>
       <mirrorOf>*</mirrorOf>
       <name>remote-repos</name>
-      <url>http://localhost:8081/artifactory/remote-repos</url>
+      <url>http://192.168.1.1:8081/artifactory/remote-repos</url>
       <id>remote-repos</id>
     </mirror>
   </mirrors>
