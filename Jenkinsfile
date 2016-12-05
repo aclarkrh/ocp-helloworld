@@ -25,7 +25,7 @@ node() {
 
   stage ('WAR Build') {
     git branch: "${gitBranch}", credentialsId: "${gitCredentialsId}", url: "${gitUrl}"
-    artifactoryMaven.run pom: 'pom.xml', goals: 'clean install -DskipITs=true -P mysql -s configuration/settings.xml'
+    artifactoryMaven.run pom: 'pom.xml', goals: 'clean install -DskipITs=true -s configuration/settings.xml'
   }
 
   stage ('OCP Config Build') {
