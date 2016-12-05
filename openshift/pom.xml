@@ -92,7 +92,7 @@
 									<artifactItems>
 										<artifactItem>
 											<groupId>org.jboss.as.quickstarts</groupId>
-											<artifactId>jboss-as-helloworld</artifactId>
+											<artifactId>jws-helloworld</artifactId>
 											<version>7.0.0.Final</version>
 											<type>war</type>
 <!-- 
