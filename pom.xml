@@ -269,6 +269,12 @@
 					<version>2.4.7</version>
 					<scope>provided</scope>
 				</dependency>
+				<dependency>
+					<groupId>commons-lang</groupId>
+					<artifactId>commons-lang</artifactId>
+					<version>2.6</version>
+					<scope>provided</scope>
+				</dependency>
 			</dependencies>
 			<build>
 				<finalName>${project.artifactId}</finalName>
@@ -285,6 +291,14 @@
 					</testResource>
 				</testResources>
 				<plugins>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>2.3.1</version>
+						<configuration>
+							<source>1.8</source>
+							<target>1.8</target>
+						</configuration>
+					</plugin>                    
 					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>fabric8-maven-plugin</artifactId>
