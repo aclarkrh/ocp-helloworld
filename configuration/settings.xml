@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <mirrors>
+    <mirror>
+      <mirrorOf>*</mirrorOf>
+      <name>remote-repos</name>
+      <url>http://localhost:8081/artifactory/remote-repos</url>
+      <id>remote-repos</id>
+    </mirror>
+  </mirrors>
+  <servers>
+    <server>
+      <id>index.docker.io</id>
+      <username>adamclark</username>
+      <password>sonicsid</password>
+    </server>
+    <server>
+      <id>artifactory</id>
+      <username>admin</username>
+      <password>password</password>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <id>redhat-ga-repository</id>
+      <repositories>
+        <repository>
+          <id>redhat-ga-repository</id>
+          <name>Red Hat GA repository</name>
+          <url>http://maven.repository.redhat.com/ga/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </repository>
+        <repository>
+            <id>fusesource</id>
+            <name>FuseSource Release Repository</name>
+            <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>redhat-ga-repository</id>
+          <name>Red Hat GA repository</name>
+          <url>http://maven.repository.redhat.com/ga/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>fusesource</id>
+            <name>FuseSource Release Repository</name>
+            <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>redhat-ga-repository</activeProfile>
+  </activeProfiles>
+</settings>
