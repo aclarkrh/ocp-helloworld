@@ -191,7 +191,7 @@
 				<fabric8.useDeploymentConfig>true</fabric8.useDeploymentConfig>
 
 				<fabric8.parameter.GIT_URI.description>URL to the Git repository</fabric8.parameter.GIT_URI.description>
-				<fabric8.parameter.GIT_URI.value>https://github.com/aclarkrh/ocp-ticket-monster</fabric8.parameter.GIT_URI.value>
+				<fabric8.parameter.GIT_URI.value>https://github.com/aclarkrh/ocp-helloworld</fabric8.parameter.GIT_URI.value>
 
 				<!-- This value is normally populated at build time by the Jenkins job -->
 				<fabric8.parameter.SOURCE_REPOSITORY_REF.description>Git branch/tag references</fabric8.parameter.SOURCE_REPOSITORY_REF.description>
