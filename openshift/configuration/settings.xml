@@ -8,13 +8,6 @@
       <id>remote-repos</id>
     </mirror>
   </mirrors>
-  <servers>
-    <server>
-      <id>artifactory</id>
-      <username>admin</username>
-      <password>password</password>
-    </server>
-  </servers>
   <profiles>
     <profile>
       <id>redhat-ga-repository</id>
