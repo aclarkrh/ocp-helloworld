@@ -29,7 +29,6 @@
 
 			<build>
 				<plugins>
-<!-- 
 					<plugin>
 						<groupId>org.codehaus.gmavenplus</groupId>
 						<artifactId>gmavenplus-plugin</artifactId>
@@ -44,29 +43,29 @@
 								<configuration>
 									<scripts>
 										<script>
-                                        	<![CDATA[
+                    	<![CDATA[
 												project.properties["binary_group_id"] = getGroupId()
 												project.properties["binary_artifact_id"] = getArtifactId()
 												project.properties["binary_version"] = getVersion()
 												project.properties["binary_packaging"] = getPackaging()
-												
+
 												def getGroupId() {
-												    def matcher = new File('../pom.xml').text =~ '<groupId>(.+)</groupId>'
+												    def matcher = new File('pom.xml').text =~ '<groupId>(.+)</groupId>'
 												    matcher ? matcher[0][1] : null
 												}
-												
+
 												def getArtifactId() {
-												    def matcher = new File('../pom.xml').text =~ '<artifactId>(.+)</artifactId>'
+												    def matcher = new File('pom.xml').text =~ '<artifactId>(.+)</artifactId>'
 												    matcher ? matcher[0][1] : null
 												}
-												
+
 												def getVersion() {
-												    def matcher = new File('../pom.xml').text =~ '<version>(.+)</version>'
+												    def matcher = new File('pom.xml').text =~ '<version>(.+)</version>'
 												    matcher ? matcher[0][1] : null
 												}
-												
+
 												def getPackaging() {
-												    def matcher = new File('../pom.xml').text =~ '<packaging>(.+)</packaging>'
+												    def matcher = new File('pom.xml').text =~ '<packaging>(.+)</packaging>'
 												    matcher ? matcher[0][1] : null
 												}
 											]]>
@@ -76,7 +75,6 @@
 							</execution>
 						</executions>
 					</plugin>
--->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -91,17 +89,11 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>org.jboss.as.quickstarts</groupId>
-											<artifactId>jws-helloworld</artifactId>
-											<version>7.0.0.Final</version>
-											<type>war</type>
-<!-- 
 											<groupId>${binary_group_id}</groupId>
 											<artifactId>${binary_artifact_id}</artifactId>
 											<version>${binary_version}</version>
 											<type>${binary_packaging}</type>
--->
-											<outputDirectory>target</outputDirectory>
+											<outputDirectory>../target</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
