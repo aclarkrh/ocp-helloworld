@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.jboss.as.quickstarts</groupId>
+	<artifactId>jboss-as-helloworld.s2i</artifactId>
+	<version>7.0.0.Final</version>
+	<packaging>pom</packaging>
+
+	<profiles>
+		<profile>
+			<id>openshift</id>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+					<version>19.0</version>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.codehaus.groovy</groupId>
+					<artifactId>groovy-all</artifactId>
+					<version>2.4.7</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.gmavenplus</groupId>
+						<artifactId>gmavenplus-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>set-war-coordinates-as-properties</id>
+								<phase>initialize</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<scripts>
+										<script>
+                                        	<![CDATA[
+												project.properties["binary_group_id"] = getGroupId()
+												project.properties["binary_artifact_id"] = getArtifactId()
+												project.properties["binary_version"] = getVersion()
+												project.properties["binary_packaging"] = getPackaging()
+												
+												def getGroupId() {
+												    def matcher = new File('../pom.xml').text =~ '<groupId>(.+)</groupId>'
+												    matcher ? matcher[0][1] : null
+												}
+												
+												def getArtifactId() {
+												    def matcher = new File('../pom.xml').text =~ '<artifactId>(.+)</artifactId>'
+												    matcher ? matcher[0][1] : null
+												}
+												
+												def getVersion() {
+												    def matcher = new File('../pom.xml').text =~ '<version>(.+)</version>'
+												    matcher ? matcher[0][1] : null
+												}
+												
+												def getPackaging() {
+												    def matcher = new File('../pom.xml').text =~ '<packaging>(.+)</packaging>'
+												    matcher ? matcher[0][1] : null
+												}
+											]]>
+										</script>
+									</scripts>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.10</version>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>${binary_group_id}</groupId>
+											<artifactId>${binary_artifact_id}</artifactId>
+											<version>${binary_version}</version>
+											<type>${binary_packaging}</type>
+											<outputDirectory>target</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
