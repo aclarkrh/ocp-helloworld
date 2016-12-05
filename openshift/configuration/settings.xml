@@ -1,72 +1,44 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
-  <mirrors>
-    <mirror>
-      <mirrorOf>*</mirrorOf>
-      <name>remote-repos</name>
-      <url>http://192.168.1.1:8081/artifactory/remote-repos</url>
-      <id>remote-repos</id>
-    </mirror>
-  </mirrors>
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <profiles>
     <profile>
-      <id>redhat-ga-repository</id>
       <repositories>
         <repository>
-          <id>redhat-ga-repository</id>
-          <name>Red Hat GA repository</name>
-          <url>http://maven.repository.redhat.com/ga/</url>
-          <releases>
-            <enabled>true</enabled>
-            <updatePolicy>never</updatePolicy>
-          </releases>
           <snapshots>
             <enabled>false</enabled>
-            <updatePolicy>daily</updatePolicy>
           </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://192.168.1.1:8081/artifactory/libs-release</url>
         </repository>
         <repository>
-            <id>fusesource</id>
-            <name>FuseSource Release Repository</name>
-            <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://192.168.1.1:8081/artifactory/libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <id>redhat-ga-repository</id>
-          <name>Red Hat GA repository</name>
-          <url>http://maven.repository.redhat.com/ga/</url>
-          <releases>
-            <enabled>true</enabled>
-            <updatePolicy>never</updatePolicy>
-          </releases>
           <snapshots>
             <enabled>false</enabled>
-            <updatePolicy>daily</updatePolicy>
           </snapshots>
+          <id>central</id>
+          <name>plugins-release</name>
+          <url>http://192.168.1.1:8081/artifactory/plugins-release</url>
         </pluginRepository>
         <pluginRepository>
-            <id>fusesource</id>
-            <name>FuseSource Release Repository</name>
-            <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
+          <snapshots />
+          <id>snapshots</id>
+          <name>plugins-snapshot</name>
+          <url>http://192.168.1.1:8081/artifactory/plugins-snapshot</url>
         </pluginRepository>
-
       </pluginRepositories>
+      <id>artifactory</id>
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>redhat-ga-repository</activeProfile>
+    <activeProfile>artifactory</activeProfile>
   </activeProfiles>
 </settings>
