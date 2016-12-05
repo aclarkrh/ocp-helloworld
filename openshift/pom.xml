@@ -29,6 +29,7 @@
 
 			<build>
 				<plugins>
+<!-- 
 					<plugin>
 						<groupId>org.codehaus.gmavenplus</groupId>
 						<artifactId>gmavenplus-plugin</artifactId>
@@ -75,6 +76,7 @@
 							</execution>
 						</executions>
 					</plugin>
+-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -89,10 +91,16 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
+											<groupId>org.jboss.as.quickstarts</groupId>
+											<artifactId>jboss-as-helloworld</artifactId>
+											<version>7.0.0.Final</version>
+											<type>war</type>
+<!-- 
 											<groupId>${binary_group_id}</groupId>
 											<artifactId>${binary_artifact_id}</artifactId>
 											<version>${binary_version}</version>
 											<type>${binary_packaging}</type>
+-->
 											<outputDirectory>target</outputDirectory>
 										</artifactItem>
 									</artifactItems>
