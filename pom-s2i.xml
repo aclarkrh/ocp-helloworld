@@ -93,7 +93,7 @@
 											<artifactId>${binary_artifact_id}</artifactId>
 											<version>${binary_version}</version>
 											<type>${binary_packaging}</type>
-											<outputDirectory>../target</outputDirectory>
+											<outputDirectory>target</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>

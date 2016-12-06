@@ -146,42 +146,11 @@
 
 	<profiles>
 		<profile>
-			<id>test-file</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>build-helper-maven-plugin</artifactId>
-						<version>1.9.1</version>
-						<executions>
-							<execution>
-								<id>attach-artifacts</id>
-								<phase>package</phase>
-								<goals>
-									<goal>attach-artifact</goal>
-								</goals>
-								<configuration>
-									<artifacts>
-										<artifact>
-											<file>target/classes/test.file</file>
-											<type>json</type>
-											<classifier>kubernetes-build</classifier>
-										</artifact>
-									</artifacts>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
 			<id>kube-dsl</id>
 			<properties>
 
-				<src.dir>openshift/src/config/java</src.dir>
-				<src.test.dir>openshift/src/config-test/java</src.test.dir>
+				<src.dir>src/config/java</src.dir>
+				<src.test.dir>src/config-test/java</src.test.dir>
 
 
 				<maven.test.skip>true</maven.test.skip>
@@ -202,10 +171,7 @@
 
 				<fabric8.parameter.SOURCE_SECRET.description>The secret containing the git credentials.</fabric8.parameter.SOURCE_SECRET.description>
 				<fabric8.parameter.SOURCE_SECRET.value>git-basic-secret</fabric8.parameter.SOURCE_SECRET.value>
-<!--
-				<fabric8.parameter.WAR_FILE_URL.description>The URL to retirve the application WAR file from.</fabric8.parameter.WAR_FILE_URL.description>
-				<fabric8.parameter.WAR_FILE_URL.value>http://127.0.0.2:8081/artifactory/list/libs-release-local/org/jboss/examples/${project.artifactId}/${project.version}/${project.artifactId}-${project.version}.war</fabric8.parameter.WAR_FILE_URL.value>
--->
+
 				<fabric8.parameter.APPLICATION_NAME.description>The name for the application.</fabric8.parameter.APPLICATION_NAME.description>
 				<fabric8.parameter.APPLICATION_NAME.value>${project.artifactId}</fabric8.parameter.APPLICATION_NAME.value>
 
@@ -280,13 +246,13 @@
 				<finalName>${project.artifactId}</finalName>
 				<resources>
 					<resource>
-						<directory>openshift/src/config/resources</directory>
+						<directory>src/config/resources</directory>
 						<filtering>true</filtering>
 					</resource>
 				</resources>
 				<testResources>
 					<testResource>
-						<directory>openshift/src/config-test/resources</directory>
+						<directory>src/config-test/resources</directory>
 						<filtering>true</filtering>
 					</testResource>
 				</testResources>
@@ -369,7 +335,7 @@
 										</property>
 									</properties>
 									<scripts>
-										<script>file:///${project.basedir}/openshift/src/config/resources/split-templates.groovy</script>
+										<script>file:///${project.basedir}/src/config/resources/split-templates.groovy</script>
 									</scripts>
 								</configuration>
 							</execution>
